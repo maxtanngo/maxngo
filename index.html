@@ -283,17 +283,6 @@
   </div>
 
   <!-- MODAL TRẢI NGHIỆM APP TRỰC TIẾP -->
- {
-  id: 1,
-  title: "MaxSave Downloader",
-  category: "ai",
-  description: "Tải video đa nền tảng không watermark, chuẩn nét 4K & MP3 trực tiếp trên trình duyệt.",
-  image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
-  tags: ["Cloud API", "No Watermark", "Client-Side"],
-  status: "Đang hoạt động",
-  // Trỏ thẳng đến file vừa tạo:
-  liveUrl: "https://maxtanngo.github.io/maxsave.html"
-}
   <div v-if="activeModalApp" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
     <div class="bg-cardDark border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
       <div class="h-12 border-b border-slate-800 px-4 flex items-center justify-between bg-slate-900/80">
@@ -345,42 +334,37 @@
         qrImageUrl: 'https://img.vietqr.io/image/MB-0973333210-print.png?accountName=NGO%20TAN%20TAN&addInfo=MaxNgo%20AI%20Donate',
         copyText: 'Sao chép số tài khoản MB Bank',
         apps: [
-          {
-            id: 1,
-            title: "CapCut Mini Studio",
-            category: "ai",
-            description: "Công cụ cắt ghép video đa khung hình, tự động tạo phụ đề chữ vàng viền đen và lồng tiếng AI tiếng Việt.",
-            image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
-            tags: ["Vue3", "FFmpeg", "Edge-TTS"],
-            status: "Đang chạy",
-            liveUrl: "https://maxtanngo.github.io/tiktok-policy/terms.html",
-            repoUrl: "https://github.com/maxtanngo"
-          },
-          {
-            id: 2,
-            title: "Viral Video Script Radar",
-            category: "ai",
-            description: "Phân tích nội dung video đa nền tảng, bóc tách kịch bản phân cảnh và sinh Master Cast Prompt đồng nhất nhân vật.",
-            image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
-            tags: ["Gemini 2.5", "Prompt Engine", "AI Automation"],
-            status: "Thực chiến",
-            liveUrl: "https://maxtanngo.github.io/tiktok-policy/privacy.html",
-            repoUrl: "https://github.com/maxtanngo"
-          },
-          {
-            id: 3,
-            title: "OmniTrend Hook Card Generator",
-            category: "tool",
-            description: "Tự động thiết kế ảnh bìa Hook Card tỷ lệ 16:9 kèm kịch bản đăng album Facebook tự dàn trang 1 ngang 3 vuông.",
-            image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
-            tags: ["Canvas API", "Automation", "Marketing Tool"],
-            status: "Tiện ích",
-            liveUrl: "https://maxtanngo.github.io/tiktok-policy/terms.html",
-            repoUrl: "https://github.com/maxtanngo"
-          }
-        ]
-      }
-    },
+          apps: [
+  {
+    id: 1,
+    title: "MaxSave Downloader",
+    category: "ai",
+    description: "Tải video đa nền tảng không watermark, chuẩn nét 4K & MP3 trực tiếp trên trình duyệt.",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    tags: ["Cloud API", "No Watermark", "Client-Side"],
+    status: "Đang hoạt động",
+    liveUrl: "https://maxtanngo.github.io/maxsave.html"
+  },
+  {
+    id: 2,
+    title: "Viral Video Script Radar",
+    category: "ai",
+    description: "Phân tích nội dung video đa nền tảng, bóc tách kịch bản phân cảnh và sinh Master Cast Prompt đồng nhất nhân vật.",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    tags: ["Gemini 2.5", "Prompt Engine", "AI Automation"],
+    status: "Thực chiến",
+    liveUrl: "https://maxtanngo.github.io/tiktok-policy/privacy.html"
+  },
+  {
+    id: 3,
+    title: "OmniTrend Hook Card Generator",
+    category: "tool",
+    description: "Tự động thiết kế ảnh bìa Hook Card tỷ lệ 16:9 kèm kịch bản đăng album Facebook tự dàn trang 1 ngang 3 vuông.",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+    tags: ["Canvas API", "Automation", "Marketing Tool"],
+    status: "Tiện ích",
+    liveUrl: "https://maxtanngo.github.io/tiktok-policy/terms.html"
+  }
     computed: {
       filteredApps() {
         if (this.currentFilter === 'all') return this.apps;
