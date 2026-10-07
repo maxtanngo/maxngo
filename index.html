@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio & AI App Studio - Max Tan Ngo</title>
+  <title>MaxNgo AI — Nền Tảng Ứng Dụng & Giải Pháp AI Đột Phá</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Vue 3 CDN -->
@@ -16,8 +16,8 @@
       theme: {
         extend: {
           colors: {
-            brandDark: '#090d16',
-            cardDark: '#121826',
+            brandDark: '#070a12',
+            cardDark: '#0f172a',
             accentCyan: '#06b6d4',
             accentPurple: '#8b5cf6',
           }
@@ -27,129 +27,233 @@
   </script>
   <style>
     .glass-card {
-      background: rgba(18, 24, 38, 0.7);
+      background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .glass-card:hover {
-      border-color: rgba(6, 182, 212, 0.4);
-      transform: translateY(-4px);
+      border-color: rgba(6, 182, 212, 0.45);
+      transform: translateY(-3px);
     }
   </style>
 </head>
 <body class="bg-brandDark text-slate-200 font-sans antialiased selection:bg-accentCyan selection:text-black">
 
-<div id="app" class="min-h-screen flex flex-col">
+<div id="app" class="min-h-screen flex flex-col justify-between">
 
   <!-- TOP NAVBAR -->
-  <header class="fixed top-0 inset-x-0 z-40 bg-brandDark/80 backdrop-blur-md border-b border-slate-800">
+  <header class="fixed top-0 inset-x-0 z-40 bg-brandDark/85 backdrop-blur-md border-b border-slate-800">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center space-x-2 font-bold text-lg text-white">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-accentCyan to-accentPurple flex items-center justify-center text-black font-black text-sm">M</span>
-        <span class="tracking-wide">Max Tan<span class="text-accentCyan">.Lab</span></span>
+      <a href="#" @click.prevent="currentView = 'home'" class="flex items-center space-x-2 font-black text-xl text-white tracking-wide">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accentCyan to-accentPurple flex items-center justify-center text-black font-black text-base shadow-lg shadow-cyan-500/20">M</span>
+        <span>MaxNgo<span class="text-accentCyan font-bold">.AI</span></span>
       </a>
-      <nav class="hidden md:flex items-center space-x-8 text-sm text-slate-300">
-        <a href="#about" class="hover:text-accentCyan transition">Về tôi</a>
-        <a href="#apps" class="hover:text-accentCyan transition">Kho Ứng Dụng</a>
-        <a href="#skills" class="hover:text-accentCyan transition">Công nghệ</a>
-        <a href="#contact" class="hover:text-accentCyan transition">Liên hệ</a>
+      
+      <nav class="flex items-center space-x-6 md:space-x-8 text-sm font-medium">
+        <button @click="currentView = 'home'" :class="currentView === 'home' ? 'text-accentCyan font-bold' : 'text-slate-300 hover:text-white'" class="transition">
+          Kho Ứng Dụng
+        </button>
+        <button @click="currentView = 'about'" :class="currentView === 'about' ? 'text-accentCyan font-bold' : 'text-slate-300 hover:text-white'" class="transition flex items-center gap-1.5">
+          <i class="fas fa-user-circle text-xs"></i> Về tôi
+        </button>
       </nav>
-      <a href="https://github.com/maxtanngo" target="_blank" class="px-4 py-1.5 rounded-full border border-slate-700 hover:border-accentCyan text-xs text-white flex items-center gap-2 transition">
-        <i class="fab fa-github"></i> GitHub Profile
+
+      <a href="https://github.com/maxtanngo" target="_blank" class="hidden sm:flex px-4 py-1.5 rounded-full border border-slate-700 hover:border-accentCyan text-xs text-white items-center gap-2 transition bg-slate-900/60">
+        <i class="fab fa-github"></i> GitHub
       </a>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section id="about" class="pt-32 pb-20 px-6 max-w-5xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accentCyan/30 bg-accentCyan/10 text-accentCyan text-xs mb-6">
-      <span class="w-2 h-2 rounded-full bg-accentCyan animate-ping"></span>
-      Sẵn sàng sáng tạo & phát triển giải pháp AI
-    </div>
-    <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-      Sáng tạo các ứng dụng <br>
-      <span class="bg-gradient-to-r from-accentCyan via-blue-500 to-accentPurple bg-clip-text text-transparent">
-        Thông minh, Tự động & Thực chiến
-      </span>
-    </h1>
-    <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-8">
-      Chào mừng bạn đến với không gian cá nhân của tôi. Nơi tôi chia sẻ các dự án AI Automation, công cụ video và các ứng dụng web thực tiễn để mọi người trải nghiệm trực tiếp.
-    </p>
-    <div class="flex items-center justify-center gap-4">
-      <a href="#apps" class="px-6 py-3 rounded-xl bg-accentCyan text-black font-bold text-sm hover:opacity-90 shadow-lg shadow-accentCyan/20 transition">
-        Trải nghiệm ứng dụng <i class="fas fa-arrow-down ml-1"></i>
-      </a>
-      <a href="#contact" class="px-6 py-3 rounded-xl border border-slate-700 hover:border-slate-500 text-sm font-semibold text-white transition">
-        Kết nối hợp tác
-      </a>
-    </div>
-  </section>
-
-  <!-- APP SHOWCASE SECTION -->
-  <section id="apps" class="py-16 px-6 max-w-6xl mx-auto flex-1 w-full">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Kho Ứng Dụng Đã Tạo</h2>
-        <p class="text-xs md:text-sm text-slate-400">Trải nghiệm tương tác trực tiếp các bản thử nghiệm ngay trên trình duyệt.</p>
+  <!-- ==================== VIEW 1: TRANG CHỦ / KHO ỨNG DỤNG ==================== -->
+  <main v-if="currentView === 'home'" class="pt-24 flex-1">
+    <!-- HERO SECTION -->
+    <section class="py-16 px-6 max-w-5xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accentCyan/30 bg-accentCyan/10 text-accentCyan text-xs mb-6 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-accentCyan animate-ping"></span>
+        Hệ sinh thái công cụ AI & Tự động hoá Video
       </div>
-      <!-- Lọc danh mục -->
-      <div class="flex gap-2 mt-4 md:mt-0 text-xs">
-        <button @click="currentFilter = 'all'" :class="currentFilter === 'all' ? 'bg-accentCyan text-black font-bold' : 'bg-slate-800 text-slate-300'" class="px-3 py-1.5 rounded-lg transition">Tất cả</button>
-        <button @click="currentFilter = 'ai'" :class="currentFilter === 'ai' ? 'bg-accentCyan text-black font-bold' : 'bg-slate-800 text-slate-300'" class="px-3 py-1.5 rounded-lg transition">AI & Media</button>
-        <button @click="currentFilter = 'tool'" :class="currentFilter === 'tool' ? 'bg-accentCyan text-black font-bold' : 'bg-slate-800 text-slate-300'" class="px-3 py-1.5 rounded-lg transition">Tiện ích</button>
+      <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
+        Sáng tạo các ứng dụng <br>
+        <span class="bg-gradient-to-r from-accentCyan via-blue-500 to-accentPurple bg-clip-text text-transparent">
+          Thông Minh • Tự Động • Thực Chiến
+        </span>
+      </h1>
+      <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-8">
+        Không gian trải nghiệm các công cụ AI Video, chuyển đổi kịch bản, và tự động hóa do <strong>MaxNgo AI</strong> phát triển trực tiếp trên trình duyệt.
+      </p>
+      <div class="flex items-center justify-center gap-4">
+        <a href="#apps" class="px-6 py-3 rounded-xl bg-accentCyan text-black font-bold text-sm hover:opacity-90 shadow-lg shadow-accentCyan/20 transition">
+          Khám phá ứng dụng <i class="fas fa-arrow-down ml-1"></i>
+        </a>
+        <button @click="currentView = 'about'" class="px-6 py-3 rounded-xl border border-slate-700 hover:border-accentCyan text-sm font-semibold text-white transition bg-slate-900/40">
+          Thông tin tác giả & Hợp tác
+        </button>
       </div>
-    </div>
+    </section>
 
-    <!-- GRID APPS -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div v-for="app in filteredApps" :key="app.id" class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300">
+    <!-- APP SHOWCASE SECTION -->
+    <section id="apps" class="py-12 px-6 max-w-6xl mx-auto w-full">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
         <div>
-          <!-- Thumbnail / Icon Header -->
-          <div class="h-40 rounded-xl bg-slate-900 border border-slate-800 mb-4 overflow-hidden relative group">
-            <img :src="app.image" :alt="app.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-            <span class="absolute top-2 right-2 text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-accentCyan border border-accentCyan/30">
-              {{ app.status }}
-            </span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Kho Ứng Dụng Đã Tạo</h2>
+          <p class="text-xs md:text-sm text-slate-400">Trải nghiệm tương tác trực tiếp các bản thử nghiệm ngay trên trình duyệt.</p>
+        </div>
+        <!-- Lọc danh mục -->
+        <div class="flex gap-2 mt-4 md:mt-0 text-xs">
+          <button @click="currentFilter = 'all'" :class="currentFilter === 'all' ? 'bg-accentCyan text-black font-bold' : 'bg-slate-800 text-slate-300'" class="px-3.5 py-1.5 rounded-lg transition">Tất cả</button>
+          <button @click="currentFilter = 'ai'" :class="currentFilter === 'ai' ? 'bg-accentCyan text-black font-bold' : 'bg-slate-800 text-slate-300'" class="px-3.5 py-1.5 rounded-lg transition">AI & Media</button>
+          <button @click="currentFilter = 'tool'" :class="currentFilter === 'tool' ? 'bg-accentCyan text-black font-bold' : 'bg-slate-800 text-slate-300'" class="px-3.5 py-1.5 rounded-lg transition">Tiện ích</button>
+        </div>
+      </div>
+
+      <!-- GRID APPS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-for="app in filteredApps" :key="app.id" class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="h-44 rounded-xl bg-slate-900 border border-slate-800 mb-4 overflow-hidden relative group">
+              <img :src="app.image" :alt="app.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-2 right-2 text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-accentCyan border border-accentCyan/30">
+                {{ app.status }}
+              </span>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-1.5">{{ app.title }}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4 line-clamp-2">{{ app.description }}</p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span v-for="tag in app.tags" :key="tag" class="text-[10px] px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
+                #{{ tag }}
+              </span>
+            </div>
           </div>
 
-          <h3 class="text-lg font-bold text-white mb-1">{{ app.title }}</h3>
-          <p class="text-xs text-slate-400 leading-relaxed mb-4">{{ app.description }}</p>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-1.5 mb-6">
-            <span v-for="tag in app.tags" :key="tag" class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-              #{{ tag }}
-            </span>
+          <div class="flex items-center gap-2 pt-3 border-t border-slate-800/80">
+            <button @click="openAppModal(app)" class="flex-1 py-2 rounded-lg bg-accentCyan/15 hover:bg-accentCyan text-accentCyan hover:text-black font-bold text-xs flex items-center justify-center gap-2 transition duration-200">
+              <i class="fas fa-play text-[10px]"></i> Trải nghiệm ngay
+            </button>
+            <a :href="app.repoUrl" target="_blank" class="w-9 h-9 rounded-lg border border-slate-800 hover:border-slate-600 flex items-center justify-center text-slate-400 hover:text-white transition">
+              <i class="fab fa-github text-sm"></i>
+            </a>
           </div>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- Action Buttons -->
-        <div class="flex items-center gap-2 pt-2 border-t border-slate-800/80">
-          <button @click="openAppModal(app)" class="flex-1 py-2 rounded-lg bg-accentCyan/20 hover:bg-accentCyan text-accentCyan hover:text-black font-bold text-xs flex items-center justify-center gap-2 transition">
-            <i class="fas fa-play text-[10px]"></i> Trải nghiệm
-          </button>
-          <a :href="app.repoUrl" target="_blank" class="w-9 h-9 rounded-lg border border-slate-800 hover:border-slate-600 flex items-center justify-center text-slate-400 hover:text-white transition">
-            <i class="fab fa-github text-sm"></i>
-          </a>
+  <!-- ==================== VIEW 2: TRANG VỀ TÔI & HỢP TÁC / DONATE ==================== -->
+  <main v-if="currentView === 'about'" class="pt-24 pb-16 px-6 max-w-5xl mx-auto flex-1 w-full">
+    <!-- Header Về Tôi -->
+    <div class="glass-card rounded-3xl p-6 md:p-10 border border-slate-800 mb-8">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <!-- Avatar Sếp (Bo tròn tỉ lệ chuẩn) -->
+        <div class="relative group">
+          <div class="w-36 h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-accentCyan/50 shadow-2xl shadow-cyan-500/10">
+            <img src="https://raw.githubusercontent.com/maxtanngo/maxngo/main/avatar.jpg" 
+                 alt="Max Tan Ngo" 
+                 onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'"
+                 class="w-full h-full object-cover">
+          </div>
+          <span class="absolute -bottom-2 -right-2 w-7 h-7 rounded-full bg-accentCyan text-black flex items-center justify-center text-xs font-bold shadow-lg" title="Verified Creator">
+            <i class="fas fa-check"></i>
+          </span>
+        </div>
+
+        <!-- Thông tin cá nhân & Lời ngỏ -->
+        <div class="flex-1 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 text-accentCyan text-xs mb-3 font-semibold border border-slate-700">
+            <span>🚀 AI Creator & Automation Developer</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-black text-white mb-2">Max Tan Ngo</h2>
+          <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-6">
+            Xin chào! Tôi là người đam mê công nghệ, chuyên xây dựng và thử nghiệm các ứng dụng AI thực chiến, hệ thống bóc tách kịch bản, và các giải pháp tự động hoá video phục vụ cộng đồng sáng tạo nội dung.
+          </p>
+
+          <!-- Liên hệ nhanh -->
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
+            <a href="mailto:tannt4@gmail.com" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold flex items-center gap-2 border border-slate-700 transition">
+              <i class="fas fa-envelope text-accentCyan"></i> tannt4@gmail.com
+            </a>
+            <a href="https://wa.me/84973333210" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition">
+              <i class="fab fa-whatsapp text-sm"></i> WhatsApp: 0973333210
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- 2 Cột: Hợp Tác Dự Án & Donate Ủng Hộ -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Cột 1: Kêu gọi Hợp tác -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold mb-4">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Hợp Tác & Phát Triển Giải Pháp AI</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Bạn có nhu cầu xây dựng công cụ AI riêng, tự động hoá quy trình sản xuất video TikTok/Reels, hoặc tích hợp các mô hình ngôn ngữ lớn (LLM/Gemini) vào doanh nghiệp?
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-accentCyan"></i> Tư vấn và đóng gói ứng dụng AI theo yêu cầu.</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-accentCyan"></i> Xây dựng hệ thống quét xu hướng, auto-clipping & caption.</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-accentCyan"></i> Hợp tác cùng phát triển các mô hình Micro-SaaS.</li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/84973333210?text=Chào%20MaxNgo,%20tôi%20muốn%20trao%20đổi%20về%20cơ%20hội%20hợp%20tác!" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-accentCyan to-blue-600 text-black font-bold text-xs text-center hover:opacity-95 shadow-lg transition">
+          Nhắn tin trao đổi hợp tác ngay
+        </a>
+      </div>
+
+      <!-- Cột 2: Donate Ủng Hộ Qua Ngân Hàng (VietQR) -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold mb-4">
+            <i class="fas fa-coffee"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Mời Tác Giả Một Ly Cà Phê ☕</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Nếu các ứng dụng trên website mang lại giá trị hoặc giúp ích cho công việc của bạn, sự ủng hộ (donate) của bạn là nguồn động lực to lớn giúp tôi duy trì server và liên tục nâng cấp các tính năng mới miễn phí.
+          </p>
+
+          <!-- Chi tiết tài khoản ngân hàng & QR -->
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex items-center gap-4 mb-4">
+            <!-- Mã VietQR chuẩn Napas -->
+            <img src="https://img.vietqr.io/image/MB-0973333210-compact2.png?amount=0&addInfo=Ung%20ho%20MaxNgo%20AI" 
+                 alt="Mã QR MB Bank 0973333210" 
+                 class="w-24 h-24 rounded-lg bg-white p-1 border border-slate-700 shadow-md">
+            <div class="text-xs space-y-1">
+              <p class="text-slate-400">Ngân hàng: <strong class="text-white">MB Bank (Quân Đội)</strong></p>
+              <p class="text-slate-400">Số tài khoản: <strong class="text-accentCyan font-mono text-sm">0973333210</strong></p>
+              <p class="text-slate-400">Chủ tài khoản: <strong class="text-white">NGO TAN TAN</strong></p>
+              <p class="text-[11px] text-amber-400/90 italic">Quét mã QR để chuyển khoản 1 chạm</p>
+            </div>
+          </div>
+        </div>
+
+        <button @click="copyBankInfo" class="w-full py-2.5 rounded-xl border border-slate-700 hover:border-accentCyan text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition">
+          <i class="fas fa-copy"></i> {{ copyText }}
+        </button>
+      </div>
+
+    </div>
+  </main>
 
   <!-- MODAL TRẢI NGHIỆM APP TRỰC TIẾP -->
   <div v-if="activeModalApp" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-    <div class="bg-cardDark border border-slate-700 w-full max-w-4xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
+    <div class="bg-cardDark border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
       <!-- Modal Header -->
-      <div class="h-12 border-b border-slate-800 px-4 flex items-center justify-between bg-slate-900/60">
+      <div class="h-12 border-b border-slate-800 px-4 flex items-center justify-between bg-slate-900/80">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-red-500"></span>
           <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
           <span class="w-3 h-3 rounded-full bg-green-500"></span>
-          <span class="text-xs font-semibold text-white ml-2">{{ activeModalApp.title }} - Live Runner</span>
+          <span class="text-xs font-bold text-white ml-2">{{ activeModalApp.title }} — Trình chạy trực tiếp</span>
         </div>
         <div class="flex items-center gap-3">
           <a :href="activeModalApp.liveUrl" target="_blank" class="text-xs text-accentCyan hover:underline flex items-center gap-1">
-            Mở tab mới <i class="fas fa-external-link-alt text-[10px]"></i>
+            Mở toàn màn hình <i class="fas fa-external-link-alt text-[10px]"></i>
           </a>
           <button @click="activeModalApp = null" class="w-7 h-7 rounded hover:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white">
             <i class="fas fa-times"></i>
@@ -163,24 +267,14 @@
     </div>
   </div>
 
-  <!-- SKILLS / TECH STACK -->
-  <section id="skills" class="py-16 px-6 max-w-5xl mx-auto border-t border-slate-800/80 w-full text-center">
-    <h2 class="text-2xl font-bold text-white mb-8">Công nghệ & Công cụ thường dùng</h2>
-    <div class="flex flex-wrap justify-center gap-4 text-xs">
-      <span class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2"><i class="fab fa-vuejs text-emerald-400"></i> Vue 3 / React</span>
-      <span class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2"><i class="fab fa-python text-blue-400"></i> Python (FastAPI)</span>
-      <span class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2"><i class="fas fa-robot text-accentPurple"></i> Gemini 2.5 & Google AI SDK</span>
-      <span class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2"><i class="fas fa-video text-amber-400"></i> FFmpeg & Edge-TTS</span>
-      <span class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2"><i class="fab fa-github text-white"></i> GitHub Pages & Vercel</span>
-    </div>
-  </section>
-
-  <!-- FOOTER & CONTACT -->
-  <footer id="contact" class="border-t border-slate-800 py-8 px-6 text-center text-xs text-slate-500 bg-slate-950">
-    <p class="mb-2">Thiết kế bởi <strong>Max Tan Ngo</strong> • Triển khai miễn phí trên GitHub Pages</p>
-    <div class="flex justify-center gap-4 mt-2 text-slate-400">
-      <a href="mailto:contact@example.com" class="hover:text-accentCyan"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://github.com/maxtanngo" target="_blank" class="hover:text-accentCyan"><i class="fab fa-github"></i> GitHub</a>
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 py-6 px-6 text-center text-xs text-slate-500 bg-brandDark">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© 2026 <strong>MaxNgo AI</strong> • Bản quyền thuộc về Max Tan Ngo</p>
+      <div class="flex items-center gap-5 text-slate-400">
+        <button @click="currentView = 'about'" class="hover:text-accentCyan transition">Liên hệ & Tài trợ</button>
+        <a href="https://github.com/maxtanngo" target="_blank" class="hover:text-accentCyan transition"><i class="fab fa-github"></i> GitHub</a>
+      </div>
     </div>
   </footer>
 
@@ -192,8 +286,10 @@
   createApp({
     data() {
       return {
+        currentView: 'home', // 'home' hoặc 'about'
         currentFilter: 'all',
         activeModalApp: null,
+        copyText: 'Sao chép số tài khoản MB Bank',
         apps: [
           {
             id: 1,
@@ -201,9 +297,9 @@
             category: "ai",
             description: "Công cụ cắt ghép video đa khung hình, tự động tạo phụ đề chữ vàng viền đen và lồng tiếng AI tiếng Việt.",
             image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
-            tags: ["Vue3", "Tailwind", "FFmpeg", "Edge-TTS"],
-            status: "Đang hoạt động",
-            liveUrl: "https://maxtanngo.github.io/tiktok-policy/terms.html", // Thay bằng link live app của bạn
+            tags: ["Vue3", "FFmpeg", "Edge-TTS"],
+            status: "Đang chạy",
+            liveUrl: "https://maxtanngo.github.io/tiktok-policy/terms.html",
             repoUrl: "https://github.com/maxtanngo"
           },
           {
@@ -212,9 +308,9 @@
             category: "ai",
             description: "Phân tích nội dung video đa nền tảng, bóc tách kịch bản phân cảnh và sinh Master Cast Prompt đồng nhất nhân vật.",
             image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
-            tags: ["Gemini 2.5", "YouTube API", "Prompt Engineering"],
-            status: "Sắp ra mắt",
-            liveUrl: "https://maxtanngo.github.io/tiktok-policy/privacy.html", // Thay bằng link demo
+            tags: ["Gemini 2.5", "Prompt Engine", "AI Automation"],
+            status: "Thực chiến",
+            liveUrl: "https://maxtanngo.github.io/tiktok-policy/privacy.html",
             repoUrl: "https://github.com/maxtanngo"
           },
           {
@@ -222,9 +318,9 @@
             title: "OmniTrend Hook Card Generator",
             category: "tool",
             description: "Tự động thiết kế ảnh bìa Hook Card tỷ lệ 16:9 kèm kịch bản đăng album Facebook tự dàn trang 1 ngang 3 vuông.",
-            image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
-            tags: ["Streamlit", "Pillow", "Canvas API"],
-            status: "Demo",
+            image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+            tags: ["Canvas API", "Automation", "Marketing Tool"],
+            status: "Tiện ích",
             liveUrl: "https://maxtanngo.github.io/tiktok-policy/terms.html",
             repoUrl: "https://github.com/maxtanngo"
           }
@@ -240,6 +336,13 @@
     methods: {
       openAppModal(app) {
         this.activeModalApp = app;
+      },
+      copyBankInfo() {
+        navigator.clipboard.writeText("0973333210");
+        this.copyText = "✓ Đã sao chép STK: 0973333210";
+        setTimeout(() => {
+          this.copyText = "Sao chép số tài khoản MB Bank";
+        }, 3000);
       }
     }
   }).mount('#app');
