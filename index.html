@@ -64,17 +64,6 @@
   </header>
 
   <!-- ==================== VIEW 1: TRANG CHỦ / KHO ỨNG DỤNG ==================== -->
- {
-  id: 1,
-  title: "MaxSave Downloader",
-  category: "ai",
-  description: "Tải video đa nền tảng không watermark, chuẩn nét 4K & MP3 trực tiếp trên trình duyệt.",
-  image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
-  tags: ["Cloud API", "No Watermark", "Client-Side"],
-  status: "Đang hoạt động",
-  // Trỏ thẳng đến file vừa tạo:
-  liveUrl: "https://maxtanngo.github.io/maxsave.html"
-}
   <main v-if="currentView === 'home'" class="pt-24 flex-1">
     <!-- HERO SECTION -->
     <section class="py-16 px-6 max-w-5xl mx-auto text-center">
@@ -294,6 +283,17 @@
   </div>
 
   <!-- MODAL TRẢI NGHIỆM APP TRỰC TIẾP -->
+ {
+  id: 1,
+  title: "MaxSave Downloader",
+  category: "ai",
+  description: "Tải video đa nền tảng không watermark, chuẩn nét 4K & MP3 trực tiếp trên trình duyệt.",
+  image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+  tags: ["Cloud API", "No Watermark", "Client-Side"],
+  status: "Đang hoạt động",
+  // Trỏ thẳng đến file vừa tạo:
+  liveUrl: "https://maxtanngo.github.io/maxsave.html"
+}
   <div v-if="activeModalApp" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
     <div class="bg-cardDark border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
       <div class="h-12 border-b border-slate-800 px-4 flex items-center justify-between bg-slate-900/80">
