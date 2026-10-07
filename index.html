@@ -79,7 +79,7 @@
         </span>
       </h1>
       <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-8">
-        Không gian trải nghiệm các công cụ AI Video, chuyển đổi kịch bản, và tự động hóa do <strong>MaxNgo AI</strong> phát triển trực tiếp trên trình duyệt.
+        Không gian trải nghiệm các công cụ AI Video, bóc tách kịch bản, và tự động hóa do <strong>MaxNgo AI</strong> phát triển trực tiếp trên trình duyệt.
       </p>
       <div class="flex items-center justify-center gap-4">
         <a href="#apps" class="px-6 py-3 rounded-xl bg-accentCyan text-black font-bold text-sm hover:opacity-90 shadow-lg shadow-accentCyan/20 transition">
@@ -145,10 +145,10 @@
     <!-- Header Về Tôi -->
     <div class="glass-card rounded-3xl p-6 md:p-10 border border-slate-800 mb-8">
       <div class="flex flex-col md:flex-row items-center gap-8">
-        <!-- Avatar Sếp (Bo tròn tỉ lệ chuẩn) -->
+        <!-- Avatar Sếp -->
         <div class="relative group">
           <div class="w-36 h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-accentCyan/50 shadow-2xl shadow-cyan-500/10">
-            <img src="https://raw.githubusercontent.com/maxtanngo/maxngo/main/avatar.jpg" 
+            <img src="avatar.jpg" 
                  alt="Max Tan Ngo" 
                  onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'"
                  class="w-full h-full object-cover">
@@ -206,7 +206,7 @@
         </a>
       </div>
 
-      <!-- Cột 2: Donate Ủng Hộ Qua Ngân Hàng (VietQR) -->
+      <!-- Cột 2: Donate Ủng Hộ Qua Ngân Hàng (Có tính năng Bấm Phóng To Mã QR) -->
       <div class="glass-card rounded-2xl p-6 md:p-8 flex flex-col justify-between">
         <div>
           <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold mb-4">
@@ -217,17 +217,25 @@
             Nếu các ứng dụng trên website mang lại giá trị hoặc giúp ích cho công việc của bạn, sự ủng hộ (donate) của bạn là nguồn động lực to lớn giúp tôi duy trì server và liên tục nâng cấp các tính năng mới miễn phí.
           </p>
 
-          <!-- Chi tiết tài khoản ngân hàng & QR -->
+          <!-- Khung tài khoản ngân hàng & QR thu nhỏ (Click để phóng to) -->
           <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex items-center gap-4 mb-4">
-            <!-- Mã VietQR chuẩn Napas -->
-            <img src="https://img.vietqr.io/image/MB-0973333210-compact2.png?amount=0&addInfo=Ung%20ho%20MaxNgo%20AI" 
-                 alt="Mã QR MB Bank 0973333210" 
-                 class="w-24 h-24 rounded-lg bg-white p-1 border border-slate-700 shadow-md">
+            <!-- Ảnh QR tương tác -->
+            <div class="relative group cursor-pointer" @click="showQrZoom = true" title="Nhấp vào để phóng to mã QR">
+              <img :src="qrImageUrl" 
+                   alt="Mã QR MB Bank 0973333210" 
+                   class="w-24 h-24 rounded-lg bg-white p-1 border border-slate-700 shadow-md group-hover:opacity-90 group-hover:scale-105 transition duration-200">
+              <div class="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
+                <i class="fas fa-search-plus text-white text-sm"></i>
+              </div>
+            </div>
+
             <div class="text-xs space-y-1">
               <p class="text-slate-400">Ngân hàng: <strong class="text-white">MB Bank (Quân Đội)</strong></p>
               <p class="text-slate-400">Số tài khoản: <strong class="text-accentCyan font-mono text-sm">0973333210</strong></p>
               <p class="text-slate-400">Chủ tài khoản: <strong class="text-white">NGO TAN TAN</strong></p>
-              <p class="text-[11px] text-amber-400/90 italic">Quét mã QR để chuyển khoản 1 chạm</p>
+              <button @click="showQrZoom = true" class="text-[11px] text-accentCyan hover:underline font-semibold flex items-center gap-1 pt-1">
+                <i class="fas fa-expand text-[10px]"></i> Bấm vào ảnh để phóng to quét mã
+              </button>
             </div>
           </div>
         </div>
@@ -240,10 +248,44 @@
     </div>
   </main>
 
+  <!-- ==================== MODAL PHÓNG TO MÃ QR THẬT ĐỂ KHÁCH QUÉT ==================== -->
+  <div v-if="showQrZoom" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md" @click.self="showQrZoom = false">
+    <div class="bg-cardDark border border-slate-700 rounded-3xl p-6 md:p-8 max-w-sm w-full text-center relative shadow-2xl animate-in fade-in zoom-in duration-200">
+      
+      <!-- Nút đóng -->
+      <button @click="showQrZoom = false" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accentCyan/10 border border-accentCyan/30 text-accentCyan text-xs font-bold mb-3">
+        <i class="fas fa-qrcode"></i> Quét mã VietQR 1 chạm
+      </div>
+
+      <h3 class="text-base font-bold text-white mb-1">Mời cà phê tác giả</h3>
+      <p class="text-xs text-slate-400 mb-5">Mở app Ngân hàng bất kỳ hoặc MoMo/ZaloPay để quét</p>
+
+      <!-- Khung hiển thị mã QR to sắc nét -->
+      <div class="bg-white p-3.5 rounded-2xl shadow-xl border-4 border-slate-800 inline-block mb-4">
+        <img :src="qrImageUrl" 
+             alt="VietQR MB Bank 0973333210 To" 
+             class="w-64 h-64 mx-auto object-contain">
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800/80 rounded-xl p-3 text-xs space-y-1 mb-4 text-left">
+        <div class="flex justify-between"><span class="text-slate-400">Ngân hàng:</span> <strong class="text-white">MB Bank</strong></div>
+        <div class="flex justify-between"><span class="text-slate-400">Số tài khoản:</span> <strong class="text-accentCyan font-mono">0973333210</strong></div>
+        <div class="flex justify-between"><span class="text-slate-400">Tên thụ hưởng:</span> <strong class="text-white">NGO TAN TAN</strong></div>
+      </div>
+
+      <button @click="showQrZoom = false" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition">
+        Đóng cửa sổ
+      </button>
+    </div>
+  </div>
+
   <!-- MODAL TRẢI NGHIỆM APP TRỰC TIẾP -->
   <div v-if="activeModalApp" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
     <div class="bg-cardDark border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
-      <!-- Modal Header -->
       <div class="h-12 border-b border-slate-800 px-4 flex items-center justify-between bg-slate-900/80">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-red-500"></span>
@@ -260,7 +302,6 @@
           </button>
         </div>
       </div>
-      <!-- Modal Body (Iframe) -->
       <div class="flex-1 bg-black relative">
         <iframe :src="activeModalApp.liveUrl" class="w-full h-full border-none"></iframe>
       </div>
@@ -286,9 +327,12 @@
   createApp({
     data() {
       return {
-        currentView: 'home', // 'home' hoặc 'about'
+        currentView: 'home',
         currentFilter: 'all',
         activeModalApp: null,
+        showQrZoom: false, // Quản lý modal phóng to mã QR
+        // Link VietQR thật tự sinh theo thông tin MB Bank 0973333210
+        qrImageUrl: 'https://img.vietqr.io/image/MB-0973333210-print.png?accountName=NGO%20TAN%20TAN&addInfo=MaxNgo%20AI%20Donate',
         copyText: 'Sao chép số tài khoản MB Bank',
         apps: [
           {
